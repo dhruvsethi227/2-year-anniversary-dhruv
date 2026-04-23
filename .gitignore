@@ -1,0 +1,4 @@
+# Video file — add manually before deploying via Vercel CLI (too large for git)
+video.mov
+
+.DS_Store
