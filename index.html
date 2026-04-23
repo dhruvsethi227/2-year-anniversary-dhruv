@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 2 Year Anniversary 💕</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Floating hearts background -->
+  <div class="hearts-bg" aria-hidden="true">
+    <span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span>
+    <span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span>
+    <span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span>
+  </div>
+
+  <!-- Question card -->
+  <div id="card">
+    <p class="subtitle">2 years of you &amp; me ♥</p>
+    <h1 id="question">Happy 2 Year Anniversary —<br>will you be my girlfriend<br>for another year?</h1>
+    <div id="buttons">
+      <button id="yes-btn">Yes! 💕</button>
+      <button id="no-btn">No</button>
+    </div>
+  </div>
+
+  <!-- Celebration (hidden until Yes is clicked) -->
+  <div id="celebration">
+    <p class="celebrate-msg">Of course you said yes 🥰<br>Here's a little something I made for you...</p>
+    <video id="anniversary-video" src="video.mov" controls playsinline></video>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
