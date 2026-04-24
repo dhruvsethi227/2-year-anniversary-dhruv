@@ -7,35 +7,54 @@ const video = document.getElementById('anniversary-video');
 // ── No button escape ──────────────────────────────────────────────────────────
 
 let noBtnFixed = false;
+let roamInterval = null;
 
-function moveNoButton() {
+function getRandomPos() {
   const btnW = noBtn.offsetWidth;
   const btnH = noBtn.offsetHeight;
   const margin = 20;
-
   const maxX = window.innerWidth  - btnW - margin;
   const maxY = window.innerHeight - btnH - margin;
+  return {
+    x: Math.random() * (maxX - margin) + margin,
+    y: Math.random() * (maxY - margin) + margin,
+  };
+}
 
-  const newX = Math.random() * (maxX - margin) + margin;
-  const newY = Math.random() * (maxY - margin) + margin;
-
+function moveNoButton() {
   if (!noBtnFixed) {
-    noBtn.style.position = 'fixed';
-    noBtn.style.zIndex   = '999';
-    // Remove from normal flow so it doesn't shift the card layout
-    noBtn.style.margin = '0';
+    noBtn.style.position   = 'fixed';
+    noBtn.style.zIndex     = '999';
+    noBtn.style.margin     = '0';
+    noBtn.style.transition = 'left 0.4s ease, top 0.4s ease';
     noBtnFixed = true;
+
+    // Place it at its current rendered position before starting to roam
+    const rect = noBtn.getBoundingClientRect();
+    noBtn.style.left = rect.left + 'px';
+    noBtn.style.top  = rect.top  + 'px';
+
+    // Start continuous roaming
+    roamInterval = setInterval(() => {
+      const { x, y } = getRandomPos();
+      noBtn.style.left = x + 'px';
+      noBtn.style.top  = y + 'px';
+    }, 1200);
   }
 
-  noBtn.style.left = newX + 'px';
-  noBtn.style.top  = newY + 'px';
+  // Snap to a new random spot immediately on hover/touch
+  const { x, y } = getRandomPos();
+  noBtn.style.transition = 'left 0.15s ease, top 0.15s ease';
+  noBtn.style.left = x + 'px';
+  noBtn.style.top  = y + 'px';
+  setTimeout(() => { noBtn.style.transition = 'left 0.4s ease, top 0.4s ease'; }, 200);
 }
 
 noBtn.addEventListener('mouseover', moveNoButton);
 
 // Mobile: move on touchstart so she can never tap it
 noBtn.addEventListener('touchstart', function (e) {
-  e.preventDefault(); // prevent the tap from firing
+  e.preventDefault();
   moveNoButton();
 }, { passive: false });
 
