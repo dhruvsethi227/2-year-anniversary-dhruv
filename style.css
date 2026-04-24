@@ -144,7 +144,7 @@ button {
   z-index: 1;
   text-align: center;
   animation: fadeInCelebrate 1s ease both;
-  padding: 1rem;
+  padding: 1rem 1rem 6rem;
   max-width: 800px;
   width: 95%;
 }

@@ -64,6 +64,9 @@ yesBtn.addEventListener('click', () => {
   // Hide the question card
   card.style.display = 'none';
 
+  // Allow scrolling on the celebration screen
+  document.body.style.overflow = 'auto';
+
   // Show celebration
   celebration.style.display = 'block';
 
